@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'
 import data from './Components/data.js'
-import './App.css';
-import AreaChart from './Components/AreaChart.js';
+import { useState } from 'react'
 import { OverlayTrigger, Tooltip, Dropdown, Accordion } from 'react-bootstrap'
+import { BrowserView, MobileView} from 'react-device-detect'
+import './App.css'
 import tokenList from './constants.js'
-import MobileVer from './Components/MobileVer.js';
-import { BrowserView, MobileView} from 'react-device-detect';
-
+import AreaChart from './Components/AreaChart.js'
+import MobileVer from './Components/MobileVer.js'
+import Loading from './Components/Loading.js'
 
 function App() {
   const [depositAmount, setDepositAmount] = useState(null)
@@ -499,7 +499,7 @@ function App() {
                     </div>
                   </div>
                   {
-                    depositAmount && depositAmount > 0 && depositAmount <= walletBalance ?
+                    depositAmount && depositAmount > 0 ?
                     <div className='my-2 fw-medium fs-6 pt-2 border-top border-1 border-grey'>
                       Projeted Earnings <span className='fw-400 fs-7 text-grey'>(Principal + Yield)</span>
                       <OverlayTrigger
@@ -513,6 +513,7 @@ function App() {
                       >
                         <i className='bi bi-info-circle-fill ms-1 text-grey'></i>
                       </OverlayTrigger>
+                      {depositAmount <= walletBalance ? 
                       <div className='d-flex flex-row justify-content-between fs-6 card card-green rounded p-1'>
                         <div>
                           Upon maturity @ <span className='fw-bold'>4.85%</span>
@@ -520,7 +521,11 @@ function App() {
                         <div className='fw-bold'>
                           {selectedOption['ticker']==='USDC' ? (Math.round(depositAmount * 100) / 100 * (1 + (4.85/100) * 3/12)).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : (Math.round(depositAmount * exchangeRate * 100) / 100 * (1 + (4.85/100) * 3/12)).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} USDC
                         </div>
+                      </div>:
+                      <div className='d-flex flex-row justify-content-end fs-6 card card-green rounded p-1'>
+                        <Loading/>
                       </div>
+                      }
                     </div>:
                   null}
                   <div className='d-flex flex-row fs-6'>
