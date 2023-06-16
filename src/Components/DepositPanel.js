@@ -234,9 +234,15 @@ export default function DepositPanel(props){
             <i className='bi bi-info-circle-fill ms-1 text-grey'></i>
           </OverlayTrigger>
         </div>
-        <button className='btn btn-primary py-3 fw-bold'>
-          Connect Wallet
-        </button>
+        { props.wallet ? 
+          <button className='btn btn-primary py-3 fw-bold' disabled={(props.walletBalance < depositAmount) || (Number(depositAmount) === 0) || (depositAmount === '') ? 'disabled' : null}>
+            {props.walletBalance < depositAmount ? 'Insufficient Balance' : 'Invest'}
+          </button>
+          : 
+          <button className='btn btn-primary py-3 fw-bold'>
+            Connect Wallet
+          </button>
+        }
       </div>
     </div>     
   )
