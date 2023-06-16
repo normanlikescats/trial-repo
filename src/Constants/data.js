@@ -186,4 +186,4 @@ let data = [
   [new Date('15 Dec 2022').getTime(),4.01],
 ]
 
-export default data;
+export default data.reverse();

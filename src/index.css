@@ -675,6 +675,12 @@ progress {
   margin-right: 0.5rem
 }
 
+.wallet-dropdown-icon{
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
 .col {
   flex: 1 0 0%;
 }
@@ -2851,7 +2857,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #4343d1;
 }
 
-.btn-sidebar:hover > .inactive-sidebar-icon{
+.btn-sidebar:hover > .inactive-sidebar-icon, .btn-sidebar:active > .inactive-sidebar-icon{
   filter: invert(29%) sepia(43%) saturate(3542%) hue-rotate(228deg) brightness(83%) contrast(102%);
 }
 
@@ -2868,6 +2874,7 @@ textarea.form-control-lg {
   --bs-btn-box-shadow: none;
   text-decoration: underline;
 }
+
 .btn-lg, .btn-group-lg > .btn {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
@@ -2907,7 +2914,6 @@ textarea.form-control-lg {
   background-color: #212529;
   color: #ffffff;
 }
-
 
 .fade {
   transition: opacity 0.15s linear;
@@ -7466,6 +7472,10 @@ textarea.form-control-lg {
 
 .text-blue{
   color: #4343d1 !important
+}
+
+.text-blue:hover{
+  color: #3636a7 !important
 }
 
 .text-decoration-none {
